@@ -17,9 +17,7 @@ class AffineGANDataset(BaseDataset):
     def pre_process_img(self, path, convertRGB, w_offset, h_offset, flip):
         if not os.path.exists(path):
             if convertRGB:
-                return np.zeros(
-                    (self.opt.fineSize, self.opt.fineSize, 3), dtype=np.float32
-                )
+                return np.zeros((self.opt.fineSize, self.opt.fineSize, 3), dtype=np.float32)
             else:
                 return np.zeros((self.opt.fineSize, self.opt.fineSize), dtype=np.float32)
 
@@ -93,9 +91,7 @@ class AffineGANDataset(BaseDataset):
             B_list = []
             np.random.seed()
             img_sample = range(1, len(img_names))
-            img_sample = np.random.choice(
-                img_sample, self.opt.train_imagenum, replace=True
-            )
+            img_sample = np.random.choice(img_sample, self.opt.train_imagenum, replace=True)
             for img_idx in range(self.opt.train_imagenum):
                 sample_image_idx = img_sample[img_idx]
 
@@ -104,12 +100,8 @@ class AffineGANDataset(BaseDataset):
 
                 B_list.append(B)
                 if not self.opt.no_patch:
-                    B_name = os.path.join(
-                        self.AB_patch[index], img_names[sample_image_idx]
-                    )
-                    B_patch = self.pre_process_img(
-                        B_name, False, w_offset, h_offset, flip
-                    )
+                    B_name = os.path.join(self.AB_patch[index], img_names[sample_image_idx])
+                    B_patch = self.pre_process_img(B_name, False, w_offset, h_offset, flip)
                     B_patch_list.append(B_patch)
 
             ret_dict["B_list"] = B_list
