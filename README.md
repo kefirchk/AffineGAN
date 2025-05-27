@@ -95,12 +95,17 @@ We provide some [pretrained models](https://drive.google.com/open?id=1zVhM2VQTir
 
 ```
 python generate.py --dataroot /path/to/dataset --name your_exp_name --checkpoints_dir /path/to/checkpoints --results_dir /path/to/result --eval
+or
+(my version): python generate.py --name your_exp_name --eval 
 ```
 
 - Make gifs from generated frames.
 
 ```
 python img2gif.py --exp_names exp_name1,exp_name1,.. --dataroot /path/to/dataset
+or
+python img2gif.py --exp_names happy --dataroot ./dataset/test_image/
+
 ```
 
 - You will see the results in the specified `results_dir`.
